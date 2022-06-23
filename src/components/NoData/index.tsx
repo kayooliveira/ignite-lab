@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Logo } from '../Logo'
 
-export function Loading() {
+export function NoData() {
   return (
     <div className=" flex max-w-full flex-1 flex-col items-center justify-center bg-ignite-gray-1">
       <div className="flex animate-bounce leading-relaxed">
