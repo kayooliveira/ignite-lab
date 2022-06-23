@@ -2,9 +2,12 @@ module.exports = {
   content: ['index.html','./src/**/*.{js,jsx,ts,tsx,vue,html}'],
   theme: {
     extend: {
+      fontFamily: {
+        sans: 'Roboto , sans-serif'
+      },
       colors: {
         "ignite": { // Ignite colors
-            'gree-dark': "#015f43",
+            'green-dark': "#015f43",
             'green-light': "#00b37e",
             'green': "#00875f",
             'blue': "#81d8f7",
@@ -16,6 +19,7 @@ module.exports = {
             'gray-4': '#323238',
             'gray-5': '#c3c3cc',
             'gray-6': '#8d8d99',
+            'gray-7': '#29292e',
             'white': '#ffffff',
         },
       }
