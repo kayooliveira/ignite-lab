@@ -2,6 +2,19 @@ module.exports = {
   content: ['index.html','./src/**/*.{js,jsx,ts,tsx,vue,html}'],
   theme: {
     extend: {
+      animation: {
+        shimmer: "3s ease-in-out 0s infinite normal none running shimmer" 
+      },
+      keyframes: {
+        shimmer: {
+          '0%, 100%': {
+            backgroundPosition: '-500px 0'
+          },
+          '100%': {
+            backgroundPosition: '500px 0'
+          }
+        }
+      },
       fontFamily: {
         sans: 'Roboto , sans-serif'
       },
