@@ -28,8 +28,10 @@ export function Lesson({ title, slug, availableAt, type }: LessonProps) {
       </span>
       <div
         className={
-          (slugParam && slugParam === slug ? 'bg-ignite-green' : '') +
-          ' flex flex-col gap-4 rounded border border-ignite-gray-7 border-transparent p-4 transition-all group-hover:border-ignite-green-dark'
+          (slugParam && slugParam === slug
+            ? 'bg-ignite-green before:bg-ignite-green'
+            : '') +
+          ' relative flex flex-col gap-4 rounded border border-ignite-gray-7 border-transparent p-4 transition-[border] before:absolute before:-left-[6px] before:top-1/2 before:z-10 before:my-auto before:-mt-2 before:h-4 before:w-4 before:rotate-45 before:rounded before:content-[""] group-hover:border-ignite-green-dark'
         }
       >
         <header className="flex justify-between">
