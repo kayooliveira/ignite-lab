@@ -2,7 +2,7 @@ import { isPast, format } from 'date-fns'
 import ptBR from 'date-fns/esm/locale/pt-BR/index.js'
 import { CheckCircle, Lock } from 'phosphor-react'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 interface LessonProps {
   title: string
@@ -12,6 +12,7 @@ interface LessonProps {
 }
 
 export function Lesson({ title, slug, availableAt, type }: LessonProps) {
+  const { slug: slugParam } = useParams<{ slug: string }>()
   const isLessonAvailable = isPast(availableAt)
   const availableAtFormatted = format(
     availableAt,
@@ -27,7 +28,7 @@ export function Lesson({ title, slug, availableAt, type }: LessonProps) {
       </span>
       <div
         className={
-          // (isLessonAvailable ? 'bg-ignite-green' : '') +
+          (slugParam && slugParam === slug ? 'bg-ignite-green' : '') +
           ' flex flex-col gap-4 rounded border border-ignite-gray-7 border-transparent p-4 transition-all group-hover:border-ignite-green-dark'
         }
       >
