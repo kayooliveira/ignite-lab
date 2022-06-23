@@ -22,7 +22,10 @@ export function Lesson({ title, slug, availableAt, type }: LessonProps) {
     }
   )
   return (
-    <Link to={`/evento/aula/${slug}`} className="group">
+    <Link
+      to={isLessonAvailable ? `/evento/aula/${slug}` : ``}
+      className={(!isLessonAvailable ? 'cursor-not-allowed' : '') + ' group'}
+    >
       <span className="mb-2 block capitalize text-ignite-gray-6">
         {availableAtFormatted}
       </span>

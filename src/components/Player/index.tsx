@@ -8,8 +8,10 @@ import { Card } from '../Card'
 import { Footer } from '../Footer'
 
 import '@vime/core/themes/default.css'
-import { Loading } from '../Loading'
+import { NoData } from '../NoData'
 import { PlayerSkelleton } from '../PlayerSkelleton'
+
+import { isPast } from 'date-fns'
 
 const GET_LESSON_BY_SLUG = gql`
   query GetLessonBySlug($slug: String) {
@@ -19,6 +21,7 @@ const GET_LESSON_BY_SLUG = gql`
       title
       videoId
       description
+      availableAt
       teacher {
         avatarUrl
         bio
@@ -31,6 +34,7 @@ interface Lesson {
   title: string
   videoId: string
   description: string
+  availableAt: string
   teacher: {
     name: string
     bio: string
@@ -57,8 +61,10 @@ export function Player() {
     return <PlayerSkelleton />
   }
 
-  if (!data.lesson) {
-    return <Loading />
+  const isLessonAvailable = isPast(new Date(data.lesson?.availableAt))
+
+  if (!data.lesson || !isLessonAvailable) {
+    return <NoData />
   }
 
   return (
