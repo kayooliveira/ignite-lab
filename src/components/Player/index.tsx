@@ -8,7 +8,8 @@ import { Card } from '../Card'
 import { Footer } from '../Footer'
 
 import '@vime/core/themes/default.css'
-import { NotFound } from '../../pages/NotFound'
+import { Loading } from '../Loading'
+import { PlayerSkelleton } from '../PlayerSkelleton'
 
 const GET_LESSON_BY_SLUG = gql`
   query GetLessonBySlug($slug: String) {
@@ -26,41 +27,44 @@ const GET_LESSON_BY_SLUG = gql`
     }
   }
 `
-
-interface GetLessonBySlug {
-  lesson: {
-    title: string
-    videoId: string
-    description: string
-    teacher: {
-      name: string
-      bio: string
-      avatarUrl: string
-    }
+interface Lesson {
+  title: string
+  videoId: string
+  description: string
+  teacher: {
+    name: string
+    bio: string
+    avatarUrl: string
   }
 }
+
+interface GetLessonBySlug {
+  lesson: Lesson
+}
+
 export function Player() {
   const { slug } = useParams<{ slug: string }>()
   const { data } = useQuery<GetLessonBySlug>(GET_LESSON_BY_SLUG, {
     variables: {
       slug
-    }
+    },
+    fetchPolicy: 'no-cache'
   })
-  console.log({ data })
+
+  // Shimmer = 563.4
+
   if (!data) {
-    return (
-      <div className="flex flex-1 items-center">
-        <p>Carregando...</p>
-      </div>
-    )
+    return <PlayerSkelleton />
   }
+
   if (!data.lesson) {
-    return <NotFound />
+    return <Loading />
   }
+
   return (
     <div className="mt-[1px] flex-1">
       <div className="flex justify-center bg-black">
-        <div className="aspect-video h-full max-h-[60vh] w-full max-w-[1100px] bg-ignite-gray-3">
+        <div className="aspect-video h-full w-full max-w-[1100px] rounded bg-ignite-gray-3">
           <VimePlayer>
             <Youtube videoId={data.lesson.videoId} />
             <DefaultUi />
@@ -70,9 +74,9 @@ export function Player() {
       <div className="flex items-start gap-[3.75rem] px-8 pt-8 pb-6">
         <div className="flex-1">
           <h1 className="mb-4 text-2xl font-bold leading-snug">
-            {data.lesson.title}
+            {data.lesson?.title}
           </h1>
-          <p className="leading-relaxed">{data.lesson.description}</p>
+          <p className="leading-relaxed">{data.lesson?.description}</p>
         </div>
         <div className="flex flex-col gap-4">
           <button className="flex items-center rounded bg-ignite-green px-6 py-4 font-bold leading-relaxed transition-colors hover:bg-ignite-green-dark">
@@ -88,15 +92,15 @@ export function Player() {
       <div className="flex items-center gap-4 px-8">
         <img
           className="h-16 w-16 rounded-full border-2 border-ignite-blue"
-          src={data.lesson.teacher.avatarUrl}
+          src={data.lesson?.teacher.avatarUrl}
           alt="Avatar do professor"
         />
         <div className="leading-relaxed">
           <strong className="block text-2xl font-bold leading-snug">
-            {data.lesson.teacher.name}
+            {data.lesson?.teacher.name}
           </strong>
           <span className="font block text-sm text-ignite-gray-6">
-            {data.lesson.teacher.bio}
+            {data.lesson?.teacher.bio}
           </span>
         </div>
       </div>
