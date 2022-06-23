@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  line-height: 1.6;
+}
 body {
-  @apply bg-zinc-900 text-zinc-100;
+  @apply bg-ignite-gray-1 text-ignite-white;
+  -webkit-font-smoothing: antialiased;
 }
