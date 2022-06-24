@@ -25,6 +25,7 @@ export function Home() {
   const [createNewSubscriber, { data, loading, error }] = useMutation(
     CREATE_NEW_SUBSCRIBER
   )
+  const alreadySubscribed = localStorage.getItem('subscribed')
 
   useEffect(() => {
     if (error) {
@@ -38,25 +39,25 @@ export function Home() {
       })
     }
     if (data) {
-      toast(
-        'Inscrição realizada com sucesso, você será redirecionado para a página do evento em 3 segundos',
-        { style: { backgroundColor: '#4caf50' } }
-      )
-
-      setTimeout(() => {
-        navigate('/evento')
-      }, 3000)
+      toast('Inscrição realizada!', { style: { backgroundColor: '#4caf50' } })
+      localStorage.setItem('subscribed', 'true')
+      navigate('/evento')
     }
   }, [data, loading, error])
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    if (alreadySubscribed) {
+      navigate('/evento')
+    }
     if (inputs.email.trim() !== '' && inputs.name.trim() !== '') {
       createNewSubscriber({
         variables: {
           name: inputs.name,
           email: inputs.email
         }
+      }).finally(() => {
+        setInputs({} as Inputs)
       })
     } else {
       toast('Por favor preencha os dados corretamente!')
@@ -92,26 +93,35 @@ export function Home() {
             className="min-w-[24.75rem] rounded bg-ignite-gray-3 p-8"
           >
             <span className="mb-6 block text-2xl font-bold leading-snug">
-              Inscreva-se gratuitamente
+              {alreadySubscribed
+                ? 'Você já está inscrito'
+                : 'Inscreva-se gratuitamente'}
             </span>
-            <input
-              name="name"
-              onChange={handleChange}
-              placeholder="Digite seu nome"
-              className="mb-2 h-14 w-full rounded bg-ignite-gray-1 px-6 placeholder-ignite-gray-4"
-            />
-            <input
-              type="email"
-              onChange={handleChange}
-              placeholder="digite seu email"
-              name="email"
-              className="h-14 w-full rounded bg-ignite-gray-1 px-6 placeholder-ignite-gray-4"
-            />
+            {!alreadySubscribed && (
+              <>
+                <input
+                  name="name"
+                  onChange={handleChange}
+                  disabled={loading}
+                  placeholder="Digite seu nome"
+                  className="mb-2 h-14 w-full rounded bg-ignite-gray-1 px-6 placeholder-ignite-gray-4"
+                />
+                <input
+                  type="email"
+                  onChange={handleChange}
+                  disabled={loading}
+                  placeholder="digite seu email"
+                  name="email"
+                  className="h-14 w-full rounded bg-ignite-gray-1 px-6 placeholder-ignite-gray-4"
+                />
+              </>
+            )}
             <button
               type="submit"
-              className="mt-6 block w-full rounded bg-ignite-primary py-4 px-6 text-sm font-bold leading-relaxed transition-colors hover:bg-ignite-primary-dark"
+              disabled={loading}
+              className="mt-6 block w-full rounded bg-ignite-primary py-4 px-6 text-sm font-bold leading-relaxed transition-colors hover:bg-ignite-primary-dark disabled:cursor-progress disabled:bg-ignite-primary-dark/50"
             >
-              GARANTIR MINHA VAGA
+              {alreadySubscribed ? 'IR PARA O EVENTO' : 'GARANTIR MINHA VAGA'}
             </button>
           </form>
         </div>
