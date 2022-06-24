@@ -2,6 +2,9 @@ module.exports = {
   content: ['index.html','./src/**/*.{js,jsx,ts,tsx,vue,html}'],
   theme: {
     extend: {
+      backgroundImage: {
+        blur: 'url(/src/assets/img/blur.png)',
+      },
       animation: {
         shimmer: "3s ease-in-out 0s infinite normal none running shimmer" 
       },
