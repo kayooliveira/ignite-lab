@@ -3,9 +3,9 @@ import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 
+import codeMockup from '../../assets/img/code-mockup.png'
 import { Footer } from '../../components/Footer'
 import { Logo } from '../../components/Logo'
-
 const CREATE_NEW_SUBSCRIBER = gql`
   mutation MyMutation($name: String!, $email: String!) {
     createSubscriber(data: { name: $name, email: $email }) {
@@ -116,10 +116,7 @@ export function Home() {
           </form>
         </div>
 
-        <img
-          src="/src/assets/img/code-mockup.png"
-          alt="mockup de um código escrito"
-        />
+        <img src={codeMockup} alt="mockup de um código escrito" />
       </div>
       <Footer />
     </div>
