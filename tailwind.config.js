@@ -20,10 +20,10 @@ module.exports = {
       },
       colors: {
         "ignite": { // Ignite colors
-            'green-dark': "#015f43",
-            'green-light': "#00b37e",
-            'green': "#00875f",
-            'blue': "#81d8f7",
+            'primary': "#9F3EA3",
+            'primary-light': "#EC8FF2",
+            'primary-dark': "#942FA3",
+            'secondary': "#F0CD5D",
             'warning': "#fba94c",
             'red-error': "#f75a68",
             'gray-1': "#09090A",

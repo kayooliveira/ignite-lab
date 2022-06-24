@@ -21,11 +21,11 @@ export function PlayerSkelleton() {
           </p>
         </div>
         <div className="flex flex-col gap-4">
-          <button className="flex items-center rounded bg-ignite-green px-6 py-4 font-bold leading-relaxed transition-colors hover:bg-ignite-green-dark">
+          <button className="flex items-center rounded bg-ignite-primary px-6 py-4 font-bold leading-relaxed transition-colors hover:bg-ignite-primary-dark">
             <DiscordLogo width="24" height="24" />
             COMUNIDADE NO DISCORD
           </button>
-          <button className="flex items-center rounded border border-ignite-blue bg-transparent px-6 py-4 font-bold leading-relaxed text-ignite-blue transition-colors hover:bg-ignite-blue hover:text-ignite-gray-1">
+          <button className="flex items-center rounded border border-ignite-secondary bg-transparent px-6 py-4 font-bold leading-relaxed text-ignite-secondary transition-colors hover:bg-ignite-secondary hover:text-ignite-gray-1">
             <Lightning width="24" height="24" />
             ACESSE O DESAFIO
           </button>
