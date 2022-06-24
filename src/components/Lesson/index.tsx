@@ -39,12 +39,24 @@ export function Lesson({ title, slug, availableAt, type }: LessonProps) {
       >
         <header className="flex justify-between">
           {isLessonAvailable ? (
-            <span className="flex items-center text-sm font-medium text-ignite-secondary">
+            <span
+              className={`flex items-center text-sm font-medium ${
+                slug && slugParam === slug
+                  ? 'text-ignite-white'
+                  : 'text-ignite-secondary'
+              }`}
+            >
               <CheckCircle width="20" height="20" className="mr-2" />
               Conteúdo liberado
             </span>
           ) : (
-            <span className="flex items-center text-sm font-medium text-ignite-warning">
+            <span
+              className={`flex items-center text-sm font-medium text-ignite-warning ${
+                slug && slugParam === slug
+                  ? 'text-ignite-white'
+                  : 'text-ignite-secondary'
+              }`}
+            >
               <Lock width="20" height="20" className="mr-2" />
               Em breve
             </span>
