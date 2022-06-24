@@ -30,7 +30,7 @@ export function Sidebar() {
   const { data } = useQuery<GetLessonsQueryResponse>(GET_LESSONS_QUERY)
 
   return (
-    <aside className="mt-[1px] flex w-[21.75rem] flex-col border-l border-ignite-gray-7 bg-ignite-gray-2 p-6">
+    <aside className="mt-[1px] flex w-[21.75rem] min-w-[21.75rem] flex-col border-l border-ignite-gray-7 bg-ignite-gray-2 p-6">
       <span className="mb-6 block border-b border-ignite-gray-7 pb-6 text-2xl font-bold">
         Cronograma de aulas
       </span>
