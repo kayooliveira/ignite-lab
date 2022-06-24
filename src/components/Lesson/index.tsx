@@ -13,6 +13,7 @@ interface LessonProps {
 
 export function Lesson({ title, slug, availableAt, type }: LessonProps) {
   const { slug: slugParam } = useParams<{ slug: string }>()
+  const isLessonSelected = slug === slugParam
   const isLessonAvailable = isPast(availableAt)
   const availableAtFormatted = format(
     availableAt,
@@ -31,7 +32,7 @@ export function Lesson({ title, slug, availableAt, type }: LessonProps) {
       </span>
       <div
         className={
-          (slugParam && slugParam === slug
+          (isLessonSelected
             ? 'bg-ignite-primary before:bg-ignite-primary'
             : '') +
           ' relative flex flex-col gap-4 rounded border border-ignite-gray-7 border-transparent p-4 transition-[border] before:absolute before:-left-[6px] before:top-1/2 before:z-10 before:my-auto before:-mt-2 before:h-4 before:w-4 before:rotate-45 before:rounded before:content-[""] group-hover:border-ignite-primary-dark'
@@ -41,9 +42,7 @@ export function Lesson({ title, slug, availableAt, type }: LessonProps) {
           {isLessonAvailable ? (
             <span
               className={`flex items-center text-sm font-medium ${
-                slug && slugParam === slug
-                  ? 'text-ignite-white'
-                  : 'text-ignite-secondary'
+                isLessonSelected ? 'text-ignite-white' : 'text-ignite-secondary'
               }`}
             >
               <CheckCircle width="20" height="20" className="mr-2" />
@@ -52,16 +51,20 @@ export function Lesson({ title, slug, availableAt, type }: LessonProps) {
           ) : (
             <span
               className={`flex items-center text-sm font-medium text-ignite-warning ${
-                slug && slugParam === slug
-                  ? 'text-ignite-white'
-                  : 'text-ignite-secondary'
+                isLessonSelected ? 'text-ignite-white' : 'text-ignite-secondary'
               }`}
             >
               <Lock width="20" height="20" className="mr-2" />
               Em breve
             </span>
           )}
-          <span className="rounded border border-ignite-primary-light py-[0.125rem] px-2 text-xs">
+          <span
+            className={`rounded border ${
+              isLessonSelected
+                ? 'border-ignite-white'
+                : 'border-ignite-primary-light'
+            } py-[0.125rem] px-2 text-xs`}
+          >
             {type === 'live' ? 'AO VIVO' : 'AULA PRÁTICA'}
           </span>
         </header>
