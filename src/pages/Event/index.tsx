@@ -8,7 +8,7 @@ export function Event() {
   return (
     <div className="flex max-h-screen min-h-screen flex-col overflow-hidden">
       <Header />
-      <main className="flex max-h-full flex-1 overflow-y-scroll">
+      <main className="flex max-h-full flex-1 overflow-y-scroll scrollbar-none">
         <Player />
         <Sidebar />
       </main>
