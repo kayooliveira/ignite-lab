@@ -34,7 +34,7 @@ export function Player() {
   }
 
   return (
-    <div className="mt-[1px] max-h-full flex-1 overflow-y-scroll scrollbar-thin scrollbar-thumb-ignite-primary-dark  scrollbar-track-ignite-gray-2">
+    <div className="mt-[1px] max-h-full flex-1 overflow-y-scroll scrollbar-none lg:scrollbar-thin lg:scrollbar-thumb-ignite-primary-dark  lg:scrollbar-track-ignite-gray-2">
       <div className="flex justify-center bg-black">
         <div className="aspect-video h-full w-full max-w-[1100px] rounded bg-ignite-gray-3">
           <VimePlayer>
