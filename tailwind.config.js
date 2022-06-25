@@ -6,9 +6,18 @@ module.exports = {
         blur: 'url(/src/assets/img/blur.png)',
       },
       animation: {
-        shimmer: "3s ease-in-out 0s infinite normal none running shimmer" 
+        shimmer: "3s ease-in-out 0s infinite normal none running shimmer" ,
+        slideFromRight: "0.5s ease-in-out 0s 1 normal none running slideFromRight",
       },
       keyframes: {
+        slideFromRight: {
+          "0%, 100%": {
+            transform: "translateX(100%)"
+          },
+          "100%": {
+            transform: "translateX(0)"
+          }
+        },
         shimmer: {
           '0%, 100%': {
             backgroundPosition: '-500px 0'
@@ -41,5 +50,7 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar')
+  ],
 }
