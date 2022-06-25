@@ -9,11 +9,12 @@ export function Sidebar() {
   function toggleSidebar() {
     setIsOpen(!isOpen)
   }
+
   return (
     <>
       <button
         onClick={toggleSidebar}
-        className="absolute top-4 right-4 z-50 flex items-start gap-2 text-ignite-primary md:hidden md:items-start"
+        className="absolute top-6 right-8 z-50 flex items-start gap-2 text-ignite-primary md:hidden md:items-start"
       >
         <strong className="text-ignite-white">Aulas</strong>
         <List weight="bold" width="24" height="24" />
