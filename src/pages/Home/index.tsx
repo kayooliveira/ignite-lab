@@ -1,4 +1,3 @@
-import { gql, useMutation } from '@apollo/client'
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
@@ -6,25 +5,18 @@ import { useNavigate } from 'react-router-dom'
 import codeMockup from '../../assets/img/code-mockup.png'
 import { Footer } from '../../components/Footer'
 import { Logo } from '../../components/Logo'
-const CREATE_NEW_SUBSCRIBER = gql`
-  mutation MyMutation($name: String!, $email: String!) {
-    createSubscriber(data: { name: $name, email: $email }) {
-      id
-    }
-  }
-`
+import { useCreateSubscriberMutation } from '../../graphql/graphqlCodegen'
 
 type Inputs = {
-  name: string
   email: string
+  name: string
 }
 
 export function Home() {
   const [inputs, setInputs] = useState<Inputs>({} as Inputs)
   const navigate = useNavigate()
-  const [createNewSubscriber, { data, loading, error }] = useMutation(
-    CREATE_NEW_SUBSCRIBER
-  )
+  const [createNewSubscriber, { loading, error, data }] =
+    useCreateSubscriberMutation({})
   const alreadySubscribed = localStorage.getItem('subscribed')
 
   useEffect(() => {
@@ -103,15 +95,17 @@ export function Home() {
                   name="name"
                   onChange={handleChange}
                   disabled={loading}
+                  required
                   placeholder="Digite seu nome"
                   className="mb-2 h-14 w-full rounded bg-ignite-gray-1 px-6 placeholder-ignite-gray-4"
                 />
                 <input
                   type="email"
+                  name="email"
                   onChange={handleChange}
                   disabled={loading}
+                  required
                   placeholder="digite seu email"
-                  name="email"
                   className="h-14 w-full rounded bg-ignite-gray-1 px-6 placeholder-ignite-gray-4"
                 />
               </>
