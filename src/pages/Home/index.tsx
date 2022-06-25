@@ -61,12 +61,12 @@ export function Home() {
   }
 
   return (
-    <div className="flex min-h-screen w-screen flex-col bg-blur bg-cover bg-bottom bg-no-repeat pt-16">
-      <div className="mx-auto flex w-full max-w-[1100px] flex-col">
-        <div className="mx-auto flex items-center justify-between gap-40">
-          <div className="min-w-[39rem]">
+    <>
+      <div className="flex min-h-screen flex-col items-center bg-blur bg-cover bg-no-repeat">
+        <div className="mx-auto mt-10 flex w-full max-w-[1100px] flex-col items-center justify-between gap-8 lg:mt-20 lg:flex-row lg:items-center lg:gap-0">
+          <div className="flex flex-col items-center p-4 lg:block lg:max-w-[40rem] lg:p-2 lg:text-left">
             <Logo />
-            <h1 className="mt-8 text-[40px] leading-tight">
+            <h1 className="mt-8 text-center text-[2.5rem] leading-tight lg:text-left">
               Construa uma{' '}
               <strong className="font-bold text-ignite-secondary">
                 aplicação completa
@@ -74,55 +74,56 @@ export function Home() {
               , do zero, com{' '}
               <strong className="font-bold text-ignite-secondary">React</strong>
             </h1>
-            <span className="mt-6 text-base leading-relaxed">
+            <span className="mt-6 text-center text-base leading-relaxed lg:text-left">
               Em apenas uma semana você vai dominar na prática uma das
               tecnologias mais utilizadas e com alta demana para acessar as
               melhores oportunidades do mercado.
             </span>
           </div>
-          <form
-            onSubmit={handleSubmit}
-            className="min-w-[24.75rem] rounded bg-ignite-gray-3 p-8"
-          >
-            <span className="mb-6 block text-2xl font-bold leading-snug">
+          <div className="w-full max-w-[40rem] rounded border border-ignite-gray-7 bg-ignite-gray-2 p-8 lg:w-auto lg:max-w-none">
+            <strong className="mb-6 block text-2xl">
               {alreadySubscribed
                 ? 'Você já está inscrito'
                 : 'Inscreva-se gratuitamente'}
-            </span>
-            {!alreadySubscribed && (
-              <>
-                <input
-                  name="name"
-                  onChange={handleChange}
-                  disabled={loading}
-                  required
-                  placeholder="Digite seu nome"
-                  className="mb-2 h-14 w-full rounded bg-ignite-gray-1 px-6 placeholder-ignite-gray-4"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  onChange={handleChange}
-                  disabled={loading}
-                  required
-                  placeholder="digite seu email"
-                  className="h-14 w-full rounded bg-ignite-gray-1 px-6 placeholder-ignite-gray-4"
-                />
-              </>
-            )}
-            <button
-              type="submit"
-              disabled={loading}
-              className="mt-6 block w-full rounded bg-ignite-primary py-4 px-6 text-sm font-bold leading-relaxed transition-colors hover:bg-ignite-primary-dark disabled:cursor-progress disabled:bg-ignite-primary-dark/50"
+            </strong>
+            <form
+              onSubmit={handleSubmit}
+              className="flex w-full flex-col gap-2"
             >
-              {alreadySubscribed ? 'IR PARA O EVENTO' : 'GARANTIR MINHA VAGA'}
-            </button>
-          </form>
+              {!alreadySubscribed && (
+                <>
+                  <input
+                    name="name"
+                    onChange={handleChange}
+                    disabled={loading}
+                    required
+                    placeholder="Digite seu nome"
+                    className="h-14 rounded bg-ignite-gray-1 px-5 placeholder-ignite-gray-4"
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    onChange={handleChange}
+                    disabled={loading}
+                    required
+                    placeholder="digite seu email"
+                    className="h-14 rounded bg-ignite-gray-1 px-5 placeholder-ignite-gray-4"
+                  />
+                </>
+              )}
+              <button
+                type="submit"
+                disabled={loading}
+                className="mt-6 block w-full rounded bg-ignite-primary py-4 px-6 text-sm font-bold leading-relaxed transition-colors hover:bg-ignite-primary-dark disabled:cursor-progress disabled:bg-ignite-primary-dark/50"
+              >
+                {alreadySubscribed ? 'IR PARA O EVENTO' : 'GARANTIR MINHA VAGA'}
+              </button>
+            </form>
+          </div>
         </div>
-
         <img src={codeMockup} alt="mockup de um código escrito" />
       </div>
       <Footer />
-    </div>
+    </>
   )
 }
