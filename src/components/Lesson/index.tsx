@@ -35,7 +35,7 @@ export function Lesson({ title, slug, availableAt, type }: LessonProps) {
           (isLessonSelected
             ? 'bg-ignite-primary before:bg-ignite-primary'
             : '') +
-          ' relative flex flex-col gap-4 rounded border border-ignite-gray-7 border-transparent p-4 transition-[border] before:absolute before:-left-[6px] before:top-1/2 before:z-10 before:my-auto before:-mt-2 before:h-4 before:w-4 before:rotate-45 before:rounded before:content-[""] group-hover:border-ignite-primary-dark'
+          ' relative flex flex-col gap-4 rounded border border-ignite-gray-7 p-4 transition-[border] before:absolute before:-left-[6px] before:top-1/2 before:z-10 before:my-auto before:-mt-2 before:h-4 before:w-4 before:rotate-45 before:rounded before:content-[""] group-hover:border-ignite-primary-dark'
         }
       >
         <header className="flex justify-between">
