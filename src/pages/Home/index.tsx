@@ -13,7 +13,7 @@ type Inputs = {
 }
 
 export function Home() {
-  const [inputs, setInputs] = useState<Inputs>({} as Inputs)
+  const [inputs, setInputs] = useState<Inputs>({ email: '', name: '' })
   const navigate = useNavigate()
   const [createNewSubscriber, { loading, error, data }] =
     useCreateSubscriberMutation({})
@@ -40,7 +40,7 @@ export function Home() {
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (alreadySubscribed) {
-      navigate('/evento')
+      return navigate('/evento')
     }
     if (inputs.email.trim() !== '' && inputs.name.trim() !== '') {
       createNewSubscriber({
@@ -49,7 +49,7 @@ export function Home() {
           email: inputs.email
         }
       }).finally(() => {
-        setInputs({} as Inputs)
+        setInputs({ email: '', name: '' })
       })
     } else {
       toast('Por favor preencha os dados corretamente!')
