@@ -12,7 +12,9 @@ export function Sidebar() {
     setIsOpen(!isOpen)
   }
   useEffect(() => {
-    setIsOpen(false)
+    if (isOpen) {
+      setIsOpen(false)
+    }
   }, [slug])
 
   return (
