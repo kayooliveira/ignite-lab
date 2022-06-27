@@ -31,11 +31,11 @@ export function Sidebar() {
           isOpen
             ? 'fixed right-0 top-0 md:static md:flex'
             : 'fixed -right-full top-0 md:static md:flex'
-        } z-50 mt-[1px]  max-h-full  w-screen min-w-[21.75rem] animate-slideFromRight flex-col
-      overflow-y-scroll
-      border-l border-ignite-gray-7 bg-ignite-gray-2
-     p-6 transition-all
-    scrollbar-thin scrollbar-thumb-ignite-primary-dark scrollbar-track-ignite-gray-1 lg:w-[21.75rem]
+        } z-50 mt-[1px]  max-h-full  w-screen min-w-[21.75rem] animate-slideFromRight flex-col overflow-y-scroll
+      border-l
+      border-ignite-gray-7 bg-ignite-gray-2 p-6
+     transition-all scrollbar-thin
+    scrollbar-thumb-ignite-primary-dark scrollbar-track-ignite-gray-1 md:w-[21.75rem] lg:w-[21.75rem]
      `}
       >
         <div className="mb-6 flex items-center justify-between border-b border-ignite-gray-7 pb-6 lg:justify-start ">
