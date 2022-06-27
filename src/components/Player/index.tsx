@@ -79,7 +79,7 @@ export function Player() {
           </button>
         </div>
       </div>
-      <div className="flex flex-col items-stretch justify-center gap-8 px-8 py-20 lg:flex-shrink-0 lg:items-center">
+      <div className="flex flex-row flex-wrap items-stretch justify-center gap-8 px-8 py-20 lg:flex-shrink-0">
         <Card
           title="Material complementar"
           content="Acesse o material complementar para acelerar o seu desenvolvimento"
