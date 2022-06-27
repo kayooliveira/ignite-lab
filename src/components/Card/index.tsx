@@ -12,7 +12,7 @@ export function Card({ title, content, icon, url }: CardProps) {
   return (
     <a
       href={url}
-      className="flex items-stretch overflow-hidden rounded bg-ignite-gray-3 transition-colors hover:bg-ignite-gray-7 lg:gap-8"
+      className="flex w-[33rem] items-stretch overflow-hidden rounded bg-ignite-gray-3 transition-colors hover:bg-ignite-gray-7 lg:gap-8"
     >
       <div className="flex items-center bg-ignite-primary-dark p-6">{icon}</div>
       <div className="flex flex-1 flex-col items-start justify-center p-6">
