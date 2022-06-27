@@ -4,6 +4,21 @@
 
 ## Aplicação desenvolvida durante o evento Ignite Lab da [@Rocketseat](https://github.com/rocketseat)
 
+
+## :books: Stack do projeto :books: 
+
+- React
+- Typescript
+- Kowind
+- Vite
+- TailwindCSS
+- GraphQL
+- Apollo-Client
+- Graphql-Code-Generator
+- React-Router-DOM
+- GraphCMS
+
+
 ---
 
 ### <p align="center"> :computer: Desktop :computer: 
