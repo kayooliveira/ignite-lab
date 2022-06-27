@@ -1,9 +1,11 @@
-<p align="center"><img width="150" src="./src/assets/img/favicon.svg">
-#<p align="center"> Ignite Lab
+<p align="center"><img width="150" src="./src/assets/img/favicon.svg"> <img width="150" src="https://github.com/rocketseat.png">
+
+# <p align="center"> Ignite Lab
 
 ## Aplicação desenvolvida durante o evento Ignite Lab da [@Rocketseat](https://github.com/rocketseat)
-<p align="center"> <img width="100" src="https://github.com/rocketseat.png">
+
 ---
+
 ### <p align="center"> :computer: Desktop :computer: 
 <p align="center">
   <img width="49%" src="https://i.imgur.com/7KXebAS.png">
