@@ -17,7 +17,7 @@ export function Lesson({ title, slug, availableAt, type }: LessonProps) {
   const isLessonAvailable = isPast(availableAt)
   const availableAtFormatted = format(
     availableAt,
-    "EEEE' • 'd' de 'MMMM' • 'hh'h'mm",
+    "EEEE' • 'd' de 'MMMM' • 'HH'h'mm",
     {
       locale: ptBR
     }
